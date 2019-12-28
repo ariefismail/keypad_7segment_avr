@@ -12,6 +12,9 @@ void CSevenSegment::Init(CKeypad *keypadInstance,CAvrSpi *spiInstance)
 {
     m_keypad=keypadInstance;
     m_spi=spiInstance;
+    char clearByte[NUM_OF_DIGIT];
+    memset(clearByte,0xff,NUM_OF_DIGIT);    
+    m_spi->Transfer(clearByte,NUM_OF_DIGIT);
 }
 
 void CSevenSegment::Execute()
@@ -31,13 +34,13 @@ void CSevenSegment::Execute()
         
         for(uint8_t i=0;i<NUM_OF_DIGIT;i++)
         {
-            dataSend[i]=textToDisplay(m_display[i]);
+            dataSend[i]=~textToDisplay(m_display[i]);
         }
     }
     else
     {
         memset(m_display,0,sizeof(m_display));
-        memset(dataSend,0,sizeof(dataSend));
+        memset(dataSend,0xff,sizeof(dataSend));
         m_index=0;
     }
 
