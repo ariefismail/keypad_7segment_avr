@@ -18,13 +18,16 @@ void CSevenSegment::Execute()
 {
     char key=m_keypad->Scan();
     if(key==0)
-        return;
+    return;
     char dataSend[NUM_OF_DIGIT];
     if(key!='C')
     {
-        m_display[m_index]=key;
-        m_index=(m_index+1)%NUM_OF_DIGIT;
-    
+        // stack data structure
+        for(uint8_t i=NUM_OF_DIGIT;i>1;i--)
+        {
+            m_display[i-1]=m_display[i-2];
+        }
+        m_display[0]=key;
         
         for(uint8_t i=0;i<NUM_OF_DIGIT;i++)
         {
@@ -39,7 +42,7 @@ void CSevenSegment::Execute()
     }
 
     m_spi->Transfer(dataSend,NUM_OF_DIGIT);
-        
+    
 }
 
 char CSevenSegment::textToDisplay(char text)

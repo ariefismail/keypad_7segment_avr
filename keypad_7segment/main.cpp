@@ -18,17 +18,17 @@ int main(void)
 {
 	// heartbeat init
     CHeartBeat heartBeat;
-	CAvrGpio led;
-	CAvrTimer timer;
+    CAvrGpio led;
+    CAvrTimer timer;
 	led.Init(PIN_HEARTBEAT,1);
 	timer.Init(CAvrTimer::psc256);
 	heartBeat.Init(&led,&timer,30000);
 	
 	// keypad init
 	// initialize the gpio
-	CKeypad keypad;
+    CKeypad keypad;
     CAvrGpio rowPin[4];
-	CAvrGpio colPin[4];
+    CAvrGpio colPin[4];
 	rowPin[0].Init(PIN_ROW0,1);
 	rowPin[1].Init(PIN_ROW1,1);
 	rowPin[2].Init(PIN_ROW2,1);
@@ -40,19 +40,17 @@ int main(void)
 	keypad.Init(rowPin,colPin);
 
 	// display init
-	CSevenSegment display;
+    CSevenSegment display;
     CAvrSpi spi;
-	CAvrGpio pin;
-	pin.Init(PIN_MOSI,1);
-	pin.Init(PIN_SCK,1);
-	pin.Init(PIN_SS,1);	
-	spi.Init(&pin,CAvrSpi::psc2,0,1);
+    CAvrGpio pin;
+    pin.Init(PIN_MOSI,1);
+    pin.Init(PIN_SCK,1);
+    pin.Init(PIN_SS,1);	
+    spi.Init(&pin,CAvrSpi::psc2,0,1);
     display.Init(&keypad,&spi);
 
     while (1) 
     {
-        //char data[4]={3,4,5,6};
-        //spi.Transfer(data,sizeof(data));
         heartBeat.Execute();
         display.Execute();
     }
