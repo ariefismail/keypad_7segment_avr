@@ -19,14 +19,25 @@ void CSevenSegment::Execute()
     char key=m_keypad->Scan();
     if(key==0)
         return;
-    m_display[m_index]=key;
-    m_index=(m_index+1)%NUM_OF_DIGIT;
-    
     char dataSend[NUM_OF_DIGIT];
-    for(uint8_t i=0;i<NUM_OF_DIGIT;i++)
+    if(key!='C')
     {
-        dataSend[i]=textToDisplay(m_display[i]);
+        m_display[m_index]=key;
+        m_index=(m_index+1)%NUM_OF_DIGIT;
+    
+        
+        for(uint8_t i=0;i<NUM_OF_DIGIT;i++)
+        {
+            dataSend[i]=textToDisplay(m_display[i]);
+        }
     }
+    else
+    {
+        memset(m_display,0,sizeof(m_display));
+        memset(dataSend,0,sizeof(dataSend));
+        m_index=0;
+    }
+
     m_spi->Transfer(dataSend,NUM_OF_DIGIT);
         
 }
