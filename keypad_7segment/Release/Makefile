@@ -43,6 +43,8 @@ C_SRCS +=  \
 ../src/AvrSpi.cpp \
 ../src/AvrTimer.cpp \
 ../src/HeartBeat.cpp \
+../src/Keypad.cpp \
+../src/SevenSegment.cpp \
 ../src/Timeout.cpp
 
 
@@ -58,6 +60,8 @@ src/AvrGpio.o \
 src/AvrSpi.o \
 src/AvrTimer.o \
 src/HeartBeat.o \
+src/Keypad.o \
+src/SevenSegment.o \
 src/Timeout.o
 
 OBJS_AS_ARGS +=  \
@@ -66,6 +70,8 @@ src/AvrGpio.o \
 src/AvrSpi.o \
 src/AvrTimer.o \
 src/HeartBeat.o \
+src/Keypad.o \
+src/SevenSegment.o \
 src/Timeout.o
 
 C_DEPS +=  \
@@ -74,6 +80,8 @@ src/AvrGpio.d \
 src/AvrSpi.d \
 src/AvrTimer.d \
 src/HeartBeat.d \
+src/Keypad.d \
+src/SevenSegment.d \
 src/Timeout.d
 
 C_DEPS_AS_ARGS +=  \
@@ -82,6 +90,8 @@ src/AvrGpio.d \
 src/AvrSpi.d \
 src/AvrTimer.d \
 src/HeartBeat.d \
+src/Keypad.d \
+src/SevenSegment.d \
 src/Timeout.d
 
 OUTPUT_FILE_PATH +=keypad_7segment.elf
@@ -127,6 +137,20 @@ src/AvrTimer.o: ../src/AvrTimer.cpp
 	
 
 src/HeartBeat.o: ../src/HeartBeat.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega32" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+src/Keypad.o: ../src/Keypad.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega32" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+src/SevenSegment.o: ../src/SevenSegment.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega32" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

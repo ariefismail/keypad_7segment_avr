@@ -12,5 +12,9 @@ src\AvrTimer.cpp
 
 src\HeartBeat.cpp
 
+src\Keypad.cpp
+
+src\SevenSegment.cpp
+
 src\Timeout.cpp
 

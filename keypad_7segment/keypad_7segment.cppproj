@@ -180,6 +180,21 @@
     <Compile Include="src\HeartBeat.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\Keypad.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\Keypad.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\PinMapping.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\SevenSegment.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\SevenSegment.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\Timeout.cpp">
       <SubType>compile</SubType>
     </Compile>
