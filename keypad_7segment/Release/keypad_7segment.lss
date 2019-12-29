@@ -3,21 +3,21 @@ keypad_7segment.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000006e0  00000000  00000000  00000074  2**1
+  0 .text         0000073a  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000018  00800060  000006e0  00000754  2**0
+  1 .data         00000018  00800060  0000073a  000007ae  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .comment      00000030  00000000  00000000  0000076c  2**0
+  2 .comment      00000030  00000000  00000000  000007c6  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000079c  2**2
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000007f8  2**2
                   CONTENTS, READONLY
-  4 .debug_info   000004e6  00000000  00000000  000007d8  2**0
+  4 .debug_info   000004e6  00000000  00000000  00000834  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_abbrev 000004a3  00000000  00000000  00000cbe  2**0
+  5 .debug_abbrev 000004a3  00000000  00000000  00000d1a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_line   00000115  00000000  00000000  00001161  2**0
+  6 .debug_line   00000115  00000000  00000000  000011bd  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_str    00000196  00000000  00000000  00001276  2**0
+  7 .debug_str    00000196  00000000  00000000  000012d2  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -57,8 +57,8 @@ Disassembly of section .text:
   60:	10 e0       	ldi	r17, 0x00	; 0
   62:	a0 e6       	ldi	r26, 0x60	; 96
   64:	b0 e0       	ldi	r27, 0x00	; 0
-  66:	e0 ee       	ldi	r30, 0xE0	; 224
-  68:	f6 e0       	ldi	r31, 0x06	; 6
+  66:	ea e3       	ldi	r30, 0x3A	; 58
+  68:	f7 e0       	ldi	r31, 0x07	; 7
   6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
   6c:	05 90       	lpm	r0, Z+
   6e:	0d 92       	st	X+, r0
@@ -66,7 +66,7 @@ Disassembly of section .text:
   72:	b1 07       	cpc	r27, r17
   74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
   76:	0e 94 41 00 	call	0x82	; 0x82 <main>
-  7a:	0c 94 6e 03 	jmp	0x6dc	; 0x6dc <_exit>
+  7a:	0c 94 9b 03 	jmp	0x736	; 0x736 <_exit>
 
 0000007e <__bad_interrupt>:
   7e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -223,7 +223,7 @@ Disassembly of section .text:
  1d8:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7CKeypad4InitEP8CAvrGpioS1_>
  1dc:	ce 01       	movw	r24, r28
  1de:	c9 96       	adiw	r24, 0x39	; 57
- 1e0:	0e 94 34 03 	call	0x668	; 0x668 <_ZN13CSevenSegmentC1Ev>
+ 1e0:	0e 94 5a 03 	call	0x6b4	; 0x6b4 <_ZN13CSevenSegmentC1Ev>
  1e4:	ce 01       	movw	r24, r28
  1e6:	8f 5a       	subi	r24, 0xAF	; 175
  1e8:	9f 4f       	sbci	r25, 0xFF	; 255
@@ -259,7 +259,7 @@ Disassembly of section .text:
  22c:	85 5b       	subi	r24, 0xB5	; 181
  22e:	9f 4f       	sbci	r25, 0xFF	; 255
  230:	0e 94 39 01 	call	0x272	; 0x272 <_ZN8CAvrGpio4InitEPVhai>
- 234:	01 e0       	ldi	r16, 0x01	; 1
+ 234:	00 e0       	ldi	r16, 0x00	; 0
  236:	20 e0       	ldi	r18, 0x00	; 0
  238:	44 e0       	ldi	r20, 0x04	; 4
  23a:	be 01       	movw	r22, r28
@@ -284,7 +284,7 @@ Disassembly of section .text:
  264:	0e 94 ed 01 	call	0x3da	; 0x3da <_ZN10CHeartBeat7ExecuteEv>
  268:	ce 01       	movw	r24, r28
  26a:	c9 96       	adiw	r24, 0x39	; 57
- 26c:	0e 94 e5 02 	call	0x5ca	; 0x5ca <_ZN13CSevenSegment7ExecuteEv>
+ 26c:	0e 94 05 03 	call	0x60a	; 0x60a <_ZN13CSevenSegment7ExecuteEv>
  270:	f6 cf       	rjmp	.-20     	; 0x25e <main+0x1dc>
 
 00000272 <_ZN8CAvrGpio4InitEPVhai>:
@@ -476,14 +476,14 @@ Disassembly of section .text:
  3c0:	79 93       	st	Y+, r23
  3c2:	ba 01       	movw	r22, r20
  3c4:	ce 01       	movw	r24, r28
- 3c6:	0e 94 3e 03 	call	0x67c	; 0x67c <_ZN8CTimeout4InitEP9CAvrTimer>
+ 3c6:	0e 94 64 03 	call	0x6c8	; 0x6c8 <_ZN8CTimeout4InitEP9CAvrTimer>
  3ca:	b8 01       	movw	r22, r16
  3cc:	ce 01       	movw	r24, r28
  3ce:	df 91       	pop	r29
  3d0:	cf 91       	pop	r28
  3d2:	1f 91       	pop	r17
  3d4:	0f 91       	pop	r16
- 3d6:	0c 94 4f 03 	jmp	0x69e	; 0x69e <_ZN8CTimeout9SetExpiryEj>
+ 3d6:	0c 94 75 03 	jmp	0x6ea	; 0x6ea <_ZN8CTimeout9SetExpiryEj>
 
 000003da <_ZN10CHeartBeat7ExecuteEv>:
  3da:	0f 93       	push	r16
@@ -495,11 +495,11 @@ Disassembly of section .text:
  3e6:	0e 5f       	subi	r16, 0xFE	; 254
  3e8:	1f 4f       	sbci	r17, 0xFF	; 255
  3ea:	c8 01       	movw	r24, r16
- 3ec:	0e 94 54 03 	call	0x6a8	; 0x6a8 <_ZN8CTimeout10HasElapsedEv>
+ 3ec:	0e 94 7a 03 	call	0x6f4	; 0x6f4 <_ZN8CTimeout10HasElapsedEv>
  3f0:	88 23       	and	r24, r24
  3f2:	59 f0       	breq	.+22     	; 0x40a <__LOCK_REGION_LENGTH__+0xa>
  3f4:	c8 01       	movw	r24, r16
- 3f6:	0e 94 42 03 	call	0x684	; 0x684 <_ZN8CTimeout5ResetEv>
+ 3f6:	0e 94 68 03 	call	0x6d0	; 0x6d0 <_ZN8CTimeout5ResetEv>
  3fa:	88 81       	ld	r24, Y
  3fc:	99 81       	ldd	r25, Y+1	; 0x01
  3fe:	df 91       	pop	r29
@@ -515,7 +515,7 @@ Disassembly of section .text:
 
 00000414 <_ZN10CHeartBeatC1Ev>:
  414:	02 96       	adiw	r24, 0x02	; 2
- 416:	0c 94 6d 03 	jmp	0x6da	; 0x6da <_ZN8CTimeoutC1Ev>
+ 416:	0c 94 93 03 	jmp	0x726	; 0x726 <_ZN8CTimeoutC1Ev>
 
 0000041a <_ZN7CKeypad4InitEP8CAvrGpioS1_>:
  41a:	af 92       	push	r10
@@ -728,161 +728,205 @@ Disassembly of section .text:
  5bc:	08 95       	ret
 
 000005be <_ZN13CSevenSegment4InitEP7CKeypadP7CAvrSpi>:
- 5be:	fc 01       	movw	r30, r24
- 5c0:	71 83       	std	Z+1, r23	; 0x01
- 5c2:	60 83       	st	Z, r22
- 5c4:	53 83       	std	Z+3, r21	; 0x03
- 5c6:	42 83       	std	Z+2, r20	; 0x02
- 5c8:	08 95       	ret
+ 5be:	0f 93       	push	r16
+ 5c0:	1f 93       	push	r17
+ 5c2:	cf 93       	push	r28
+ 5c4:	df 93       	push	r29
+ 5c6:	00 d0       	rcall	.+0      	; 0x5c8 <_ZN13CSevenSegment4InitEP7CKeypadP7CAvrSpi+0xa>
+ 5c8:	00 d0       	rcall	.+0      	; 0x5ca <_ZN13CSevenSegment4InitEP7CKeypadP7CAvrSpi+0xc>
+ 5ca:	cd b7       	in	r28, 0x3d	; 61
+ 5cc:	de b7       	in	r29, 0x3e	; 62
+ 5ce:	8a 01       	movw	r16, r20
+ 5d0:	fc 01       	movw	r30, r24
+ 5d2:	71 83       	std	Z+1, r23	; 0x01
+ 5d4:	60 83       	st	Z, r22
+ 5d6:	53 83       	std	Z+3, r21	; 0x03
+ 5d8:	42 83       	std	Z+2, r20	; 0x02
+ 5da:	44 e0       	ldi	r20, 0x04	; 4
+ 5dc:	50 e0       	ldi	r21, 0x00	; 0
+ 5de:	6f ef       	ldi	r22, 0xFF	; 255
+ 5e0:	70 e0       	ldi	r23, 0x00	; 0
+ 5e2:	ce 01       	movw	r24, r28
+ 5e4:	01 96       	adiw	r24, 0x01	; 1
+ 5e6:	0e 94 94 03 	call	0x728	; 0x728 <memset>
+ 5ea:	44 e0       	ldi	r20, 0x04	; 4
+ 5ec:	be 01       	movw	r22, r28
+ 5ee:	6f 5f       	subi	r22, 0xFF	; 255
+ 5f0:	7f 4f       	sbci	r23, 0xFF	; 255
+ 5f2:	c8 01       	movw	r24, r16
+ 5f4:	0e 94 b0 01 	call	0x360	; 0x360 <_ZN7CAvrSpi8TransferEPch>
+ 5f8:	0f 90       	pop	r0
+ 5fa:	0f 90       	pop	r0
+ 5fc:	0f 90       	pop	r0
+ 5fe:	0f 90       	pop	r0
+ 600:	df 91       	pop	r29
+ 602:	cf 91       	pop	r28
+ 604:	1f 91       	pop	r17
+ 606:	0f 91       	pop	r16
+ 608:	08 95       	ret
 
-000005ca <_ZN13CSevenSegment7ExecuteEv>:
- 5ca:	0f 93       	push	r16
- 5cc:	1f 93       	push	r17
- 5ce:	cf 93       	push	r28
- 5d0:	df 93       	push	r29
- 5d2:	00 d0       	rcall	.+0      	; 0x5d4 <_ZN13CSevenSegment7ExecuteEv+0xa>
- 5d4:	00 d0       	rcall	.+0      	; 0x5d6 <_ZN13CSevenSegment7ExecuteEv+0xc>
- 5d6:	cd b7       	in	r28, 0x3d	; 61
- 5d8:	de b7       	in	r29, 0x3e	; 62
- 5da:	8c 01       	movw	r16, r24
- 5dc:	fc 01       	movw	r30, r24
- 5de:	80 81       	ld	r24, Z
- 5e0:	91 81       	ldd	r25, Z+1	; 0x01
- 5e2:	0e 94 72 02 	call	0x4e4	; 0x4e4 <_ZN7CKeypad4ScanEv>
- 5e6:	88 23       	and	r24, r24
- 5e8:	b1 f1       	breq	.+108    	; 0x656 <_ZN13CSevenSegment7ExecuteEv+0x8c>
- 5ea:	d8 01       	movw	r26, r16
- 5ec:	14 96       	adiw	r26, 0x04	; 4
- 5ee:	be 01       	movw	r22, r28
- 5f0:	6f 5f       	subi	r22, 0xFF	; 255
- 5f2:	7f 4f       	sbci	r23, 0xFF	; 255
- 5f4:	83 34       	cpi	r24, 0x43	; 67
- 5f6:	e9 f0       	breq	.+58     	; 0x632 <_ZN13CSevenSegment7ExecuteEv+0x68>
- 5f8:	f8 01       	movw	r30, r16
- 5fa:	96 81       	ldd	r25, Z+6	; 0x06
- 5fc:	97 83       	std	Z+7, r25	; 0x07
- 5fe:	95 81       	ldd	r25, Z+5	; 0x05
- 600:	96 83       	std	Z+6, r25	; 0x06
- 602:	94 81       	ldd	r25, Z+4	; 0x04
- 604:	95 83       	std	Z+5, r25	; 0x05
- 606:	84 83       	std	Z+4, r24	; 0x04
- 608:	cb 01       	movw	r24, r22
- 60a:	a8 01       	movw	r20, r16
- 60c:	48 5f       	subi	r20, 0xF8	; 248
- 60e:	5f 4f       	sbci	r21, 0xFF	; 255
- 610:	ed 91       	ld	r30, X+
- 612:	e0 53       	subi	r30, 0x30	; 48
- 614:	e7 31       	cpi	r30, 0x17	; 23
- 616:	28 f4       	brcc	.+10     	; 0x622 <_ZN13CSevenSegment7ExecuteEv+0x58>
- 618:	f0 e0       	ldi	r31, 0x00	; 0
- 61a:	e0 5a       	subi	r30, 0xA0	; 160
- 61c:	ff 4f       	sbci	r31, 0xFF	; 255
- 61e:	20 81       	ld	r18, Z
- 620:	01 c0       	rjmp	.+2      	; 0x624 <_ZN13CSevenSegment7ExecuteEv+0x5a>
- 622:	20 e0       	ldi	r18, 0x00	; 0
- 624:	fc 01       	movw	r30, r24
- 626:	21 93       	st	Z+, r18
- 628:	cf 01       	movw	r24, r30
- 62a:	a4 17       	cp	r26, r20
- 62c:	b5 07       	cpc	r27, r21
- 62e:	81 f7       	brne	.-32     	; 0x610 <_ZN13CSevenSegment7ExecuteEv+0x46>
- 630:	0c c0       	rjmp	.+24     	; 0x64a <_ZN13CSevenSegment7ExecuteEv+0x80>
- 632:	84 e0       	ldi	r24, 0x04	; 4
- 634:	fd 01       	movw	r30, r26
- 636:	98 2f       	mov	r25, r24
- 638:	11 92       	st	Z+, r1
- 63a:	9a 95       	dec	r25
- 63c:	e9 f7       	brne	.-6      	; 0x638 <_ZN13CSevenSegment7ExecuteEv+0x6e>
- 63e:	fb 01       	movw	r30, r22
- 640:	11 92       	st	Z+, r1
- 642:	8a 95       	dec	r24
- 644:	e9 f7       	brne	.-6      	; 0x640 <_ZN13CSevenSegment7ExecuteEv+0x76>
- 646:	f8 01       	movw	r30, r16
- 648:	10 86       	std	Z+8, r1	; 0x08
- 64a:	44 e0       	ldi	r20, 0x04	; 4
- 64c:	f8 01       	movw	r30, r16
- 64e:	82 81       	ldd	r24, Z+2	; 0x02
- 650:	93 81       	ldd	r25, Z+3	; 0x03
- 652:	0e 94 b0 01 	call	0x360	; 0x360 <_ZN7CAvrSpi8TransferEPch>
- 656:	0f 90       	pop	r0
- 658:	0f 90       	pop	r0
- 65a:	0f 90       	pop	r0
- 65c:	0f 90       	pop	r0
- 65e:	df 91       	pop	r29
- 660:	cf 91       	pop	r28
- 662:	1f 91       	pop	r17
- 664:	0f 91       	pop	r16
- 666:	08 95       	ret
+0000060a <_ZN13CSevenSegment7ExecuteEv>:
+ 60a:	0f 93       	push	r16
+ 60c:	1f 93       	push	r17
+ 60e:	cf 93       	push	r28
+ 610:	df 93       	push	r29
+ 612:	00 d0       	rcall	.+0      	; 0x614 <_ZN13CSevenSegment7ExecuteEv+0xa>
+ 614:	00 d0       	rcall	.+0      	; 0x616 <_ZN13CSevenSegment7ExecuteEv+0xc>
+ 616:	cd b7       	in	r28, 0x3d	; 61
+ 618:	de b7       	in	r29, 0x3e	; 62
+ 61a:	8c 01       	movw	r16, r24
+ 61c:	fc 01       	movw	r30, r24
+ 61e:	80 81       	ld	r24, Z
+ 620:	91 81       	ldd	r25, Z+1	; 0x01
+ 622:	0e 94 72 02 	call	0x4e4	; 0x4e4 <_ZN7CKeypad4ScanEv>
+ 626:	88 23       	and	r24, r24
+ 628:	e1 f1       	breq	.+120    	; 0x6a2 <_ZN13CSevenSegment7ExecuteEv+0x98>
+ 62a:	d8 01       	movw	r26, r16
+ 62c:	14 96       	adiw	r26, 0x04	; 4
+ 62e:	83 34       	cpi	r24, 0x43	; 67
+ 630:	01 f1       	breq	.+64     	; 0x672 <_ZN13CSevenSegment7ExecuteEv+0x68>
+ 632:	f8 01       	movw	r30, r16
+ 634:	96 81       	ldd	r25, Z+6	; 0x06
+ 636:	97 83       	std	Z+7, r25	; 0x07
+ 638:	95 81       	ldd	r25, Z+5	; 0x05
+ 63a:	96 83       	std	Z+6, r25	; 0x06
+ 63c:	94 81       	ldd	r25, Z+4	; 0x04
+ 63e:	95 83       	std	Z+5, r25	; 0x05
+ 640:	84 83       	std	Z+4, r24	; 0x04
+ 642:	9e 01       	movw	r18, r28
+ 644:	2f 5f       	subi	r18, 0xFF	; 255
+ 646:	3f 4f       	sbci	r19, 0xFF	; 255
+ 648:	a8 01       	movw	r20, r16
+ 64a:	48 5f       	subi	r20, 0xF8	; 248
+ 64c:	5f 4f       	sbci	r21, 0xFF	; 255
+ 64e:	ed 91       	ld	r30, X+
+ 650:	e0 53       	subi	r30, 0x30	; 48
+ 652:	e7 31       	cpi	r30, 0x17	; 23
+ 654:	28 f4       	brcc	.+10     	; 0x660 <_ZN13CSevenSegment7ExecuteEv+0x56>
+ 656:	f0 e0       	ldi	r31, 0x00	; 0
+ 658:	e0 5a       	subi	r30, 0xA0	; 160
+ 65a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 65c:	80 81       	ld	r24, Z
+ 65e:	01 c0       	rjmp	.+2      	; 0x662 <_ZN13CSevenSegment7ExecuteEv+0x58>
+ 660:	80 e0       	ldi	r24, 0x00	; 0
+ 662:	80 95       	com	r24
+ 664:	f9 01       	movw	r30, r18
+ 666:	81 93       	st	Z+, r24
+ 668:	9f 01       	movw	r18, r30
+ 66a:	a4 17       	cp	r26, r20
+ 66c:	b5 07       	cpc	r27, r21
+ 66e:	79 f7       	brne	.-34     	; 0x64e <_ZN13CSevenSegment7ExecuteEv+0x44>
+ 670:	0f c0       	rjmp	.+30     	; 0x690 <_ZN13CSevenSegment7ExecuteEv+0x86>
+ 672:	84 e0       	ldi	r24, 0x04	; 4
+ 674:	fd 01       	movw	r30, r26
+ 676:	11 92       	st	Z+, r1
+ 678:	8a 95       	dec	r24
+ 67a:	e9 f7       	brne	.-6      	; 0x676 <_ZN13CSevenSegment7ExecuteEv+0x6c>
+ 67c:	44 e0       	ldi	r20, 0x04	; 4
+ 67e:	50 e0       	ldi	r21, 0x00	; 0
+ 680:	6f ef       	ldi	r22, 0xFF	; 255
+ 682:	70 e0       	ldi	r23, 0x00	; 0
+ 684:	ce 01       	movw	r24, r28
+ 686:	01 96       	adiw	r24, 0x01	; 1
+ 688:	0e 94 94 03 	call	0x728	; 0x728 <memset>
+ 68c:	f8 01       	movw	r30, r16
+ 68e:	10 86       	std	Z+8, r1	; 0x08
+ 690:	44 e0       	ldi	r20, 0x04	; 4
+ 692:	be 01       	movw	r22, r28
+ 694:	6f 5f       	subi	r22, 0xFF	; 255
+ 696:	7f 4f       	sbci	r23, 0xFF	; 255
+ 698:	f8 01       	movw	r30, r16
+ 69a:	82 81       	ldd	r24, Z+2	; 0x02
+ 69c:	93 81       	ldd	r25, Z+3	; 0x03
+ 69e:	0e 94 b0 01 	call	0x360	; 0x360 <_ZN7CAvrSpi8TransferEPch>
+ 6a2:	0f 90       	pop	r0
+ 6a4:	0f 90       	pop	r0
+ 6a6:	0f 90       	pop	r0
+ 6a8:	0f 90       	pop	r0
+ 6aa:	df 91       	pop	r29
+ 6ac:	cf 91       	pop	r28
+ 6ae:	1f 91       	pop	r17
+ 6b0:	0f 91       	pop	r16
+ 6b2:	08 95       	ret
 
-00000668 <_ZN13CSevenSegmentC1Ev>:
- 668:	fc 01       	movw	r30, r24
- 66a:	34 96       	adiw	r30, 0x04	; 4
- 66c:	24 e0       	ldi	r18, 0x04	; 4
- 66e:	df 01       	movw	r26, r30
- 670:	1d 92       	st	X+, r1
- 672:	2a 95       	dec	r18
- 674:	e9 f7       	brne	.-6      	; 0x670 <_ZN13CSevenSegmentC1Ev+0x8>
- 676:	fc 01       	movw	r30, r24
- 678:	10 86       	std	Z+8, r1	; 0x08
- 67a:	08 95       	ret
+000006b4 <_ZN13CSevenSegmentC1Ev>:
+ 6b4:	fc 01       	movw	r30, r24
+ 6b6:	34 96       	adiw	r30, 0x04	; 4
+ 6b8:	24 e0       	ldi	r18, 0x04	; 4
+ 6ba:	df 01       	movw	r26, r30
+ 6bc:	1d 92       	st	X+, r1
+ 6be:	2a 95       	dec	r18
+ 6c0:	e9 f7       	brne	.-6      	; 0x6bc <_ZN13CSevenSegmentC1Ev+0x8>
+ 6c2:	fc 01       	movw	r30, r24
+ 6c4:	10 86       	std	Z+8, r1	; 0x08
+ 6c6:	08 95       	ret
 
-0000067c <_ZN8CTimeout4InitEP9CAvrTimer>:
- 67c:	fc 01       	movw	r30, r24
- 67e:	71 83       	std	Z+1, r23	; 0x01
- 680:	60 83       	st	Z, r22
- 682:	08 95       	ret
+000006c8 <_ZN8CTimeout4InitEP9CAvrTimer>:
+ 6c8:	fc 01       	movw	r30, r24
+ 6ca:	71 83       	std	Z+1, r23	; 0x01
+ 6cc:	60 83       	st	Z, r22
+ 6ce:	08 95       	ret
 
-00000684 <_ZN8CTimeout5ResetEv>:
- 684:	cf 93       	push	r28
- 686:	df 93       	push	r29
- 688:	ec 01       	movw	r28, r24
- 68a:	88 81       	ld	r24, Y
- 68c:	99 81       	ldd	r25, Y+1	; 0x01
- 68e:	0e 94 d5 01 	call	0x3aa	; 0x3aa <_ZN9CAvrTimer7GetTickEv>
- 692:	9d 83       	std	Y+5, r25	; 0x05
- 694:	8c 83       	std	Y+4, r24	; 0x04
- 696:	1e 82       	std	Y+6, r1	; 0x06
- 698:	df 91       	pop	r29
- 69a:	cf 91       	pop	r28
- 69c:	08 95       	ret
+000006d0 <_ZN8CTimeout5ResetEv>:
+ 6d0:	cf 93       	push	r28
+ 6d2:	df 93       	push	r29
+ 6d4:	ec 01       	movw	r28, r24
+ 6d6:	88 81       	ld	r24, Y
+ 6d8:	99 81       	ldd	r25, Y+1	; 0x01
+ 6da:	0e 94 d5 01 	call	0x3aa	; 0x3aa <_ZN9CAvrTimer7GetTickEv>
+ 6de:	9d 83       	std	Y+5, r25	; 0x05
+ 6e0:	8c 83       	std	Y+4, r24	; 0x04
+ 6e2:	1e 82       	std	Y+6, r1	; 0x06
+ 6e4:	df 91       	pop	r29
+ 6e6:	cf 91       	pop	r28
+ 6e8:	08 95       	ret
 
-0000069e <_ZN8CTimeout9SetExpiryEj>:
- 69e:	fc 01       	movw	r30, r24
- 6a0:	73 83       	std	Z+3, r23	; 0x03
- 6a2:	62 83       	std	Z+2, r22	; 0x02
- 6a4:	0c 94 42 03 	jmp	0x684	; 0x684 <_ZN8CTimeout5ResetEv>
+000006ea <_ZN8CTimeout9SetExpiryEj>:
+ 6ea:	fc 01       	movw	r30, r24
+ 6ec:	73 83       	std	Z+3, r23	; 0x03
+ 6ee:	62 83       	std	Z+2, r22	; 0x02
+ 6f0:	0c 94 68 03 	jmp	0x6d0	; 0x6d0 <_ZN8CTimeout5ResetEv>
 
-000006a8 <_ZN8CTimeout10HasElapsedEv>:
- 6a8:	cf 93       	push	r28
- 6aa:	df 93       	push	r29
- 6ac:	ec 01       	movw	r28, r24
- 6ae:	8e 81       	ldd	r24, Y+6	; 0x06
- 6b0:	81 11       	cpse	r24, r1
- 6b2:	0f c0       	rjmp	.+30     	; 0x6d2 <_ZN8CTimeout10HasElapsedEv+0x2a>
- 6b4:	88 81       	ld	r24, Y
- 6b6:	99 81       	ldd	r25, Y+1	; 0x01
- 6b8:	0e 94 d5 01 	call	0x3aa	; 0x3aa <_ZN9CAvrTimer7GetTickEv>
- 6bc:	2c 81       	ldd	r18, Y+4	; 0x04
- 6be:	3d 81       	ldd	r19, Y+5	; 0x05
- 6c0:	82 1b       	sub	r24, r18
- 6c2:	93 0b       	sbc	r25, r19
- 6c4:	2a 81       	ldd	r18, Y+2	; 0x02
- 6c6:	3b 81       	ldd	r19, Y+3	; 0x03
- 6c8:	82 17       	cp	r24, r18
- 6ca:	93 07       	cpc	r25, r19
- 6cc:	10 f0       	brcs	.+4      	; 0x6d2 <_ZN8CTimeout10HasElapsedEv+0x2a>
- 6ce:	81 e0       	ldi	r24, 0x01	; 1
- 6d0:	8e 83       	std	Y+6, r24	; 0x06
- 6d2:	8e 81       	ldd	r24, Y+6	; 0x06
- 6d4:	df 91       	pop	r29
- 6d6:	cf 91       	pop	r28
- 6d8:	08 95       	ret
+000006f4 <_ZN8CTimeout10HasElapsedEv>:
+ 6f4:	cf 93       	push	r28
+ 6f6:	df 93       	push	r29
+ 6f8:	ec 01       	movw	r28, r24
+ 6fa:	8e 81       	ldd	r24, Y+6	; 0x06
+ 6fc:	81 11       	cpse	r24, r1
+ 6fe:	0f c0       	rjmp	.+30     	; 0x71e <_ZN8CTimeout10HasElapsedEv+0x2a>
+ 700:	88 81       	ld	r24, Y
+ 702:	99 81       	ldd	r25, Y+1	; 0x01
+ 704:	0e 94 d5 01 	call	0x3aa	; 0x3aa <_ZN9CAvrTimer7GetTickEv>
+ 708:	2c 81       	ldd	r18, Y+4	; 0x04
+ 70a:	3d 81       	ldd	r19, Y+5	; 0x05
+ 70c:	82 1b       	sub	r24, r18
+ 70e:	93 0b       	sbc	r25, r19
+ 710:	2a 81       	ldd	r18, Y+2	; 0x02
+ 712:	3b 81       	ldd	r19, Y+3	; 0x03
+ 714:	82 17       	cp	r24, r18
+ 716:	93 07       	cpc	r25, r19
+ 718:	10 f0       	brcs	.+4      	; 0x71e <_ZN8CTimeout10HasElapsedEv+0x2a>
+ 71a:	81 e0       	ldi	r24, 0x01	; 1
+ 71c:	8e 83       	std	Y+6, r24	; 0x06
+ 71e:	8e 81       	ldd	r24, Y+6	; 0x06
+ 720:	df 91       	pop	r29
+ 722:	cf 91       	pop	r28
+ 724:	08 95       	ret
 
-000006da <_ZN8CTimeoutC1Ev>:
- 6da:	08 95       	ret
+00000726 <_ZN8CTimeoutC1Ev>:
+ 726:	08 95       	ret
 
-000006dc <_exit>:
- 6dc:	f8 94       	cli
+00000728 <memset>:
+ 728:	dc 01       	movw	r26, r24
+ 72a:	01 c0       	rjmp	.+2      	; 0x72e <memset+0x6>
+ 72c:	6d 93       	st	X+, r22
+ 72e:	41 50       	subi	r20, 0x01	; 1
+ 730:	50 40       	sbci	r21, 0x00	; 0
+ 732:	e0 f7       	brcc	.-8      	; 0x72c <memset+0x4>
+ 734:	08 95       	ret
 
-000006de <__stop_program>:
- 6de:	ff cf       	rjmp	.-2      	; 0x6de <__stop_program>
+00000736 <_exit>:
+ 736:	f8 94       	cli
+
+00000738 <__stop_program>:
+ 738:	ff cf       	rjmp	.-2      	; 0x738 <__stop_program>
