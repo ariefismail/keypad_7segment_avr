@@ -46,7 +46,7 @@ int main(void)
     pin.Init(PIN_MOSI,1);
     pin.Init(PIN_SCK,1);
     pin.Init(PIN_SS,1);	
-    spi.Init(&pin,CAvrSpi::psc2,0,1);
+    spi.Init(&pin,CAvrSpi::psc2,0,0);
     display.Init(&keypad,&spi);
 
     while (1) 
